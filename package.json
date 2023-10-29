@@ -1,4 +1,21 @@
 {
+  "name": "estol-auth-oauth",
+  "version": "1.0.1",
+  "description": "Autnentication & Authorization, passport based dependency",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/estol-web-design/dependency-auth.git"
+  },
+  "keywords": [
+    "auth",
+    "oauth",
+    "authorization",
+    "passport"
+  ],
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "passport": "^0.6.0",
@@ -8,5 +25,11 @@
     "passport-local": "^1.0.0",
     "passport-microsoft": "^1.0.0",
     "passport-twitter": "^1.0.4"
-  }
+  },
+  "author": "Esteban Guillermo Olivera Pereyra",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/estol-web-design/dependency-auth/issues"
+  },
+  "homepage": "https://github.com/estol-web-design/dependency-auth#readme"
 }

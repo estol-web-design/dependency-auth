@@ -1,5 +1,3 @@
-import passport from "passport";
-
 export const isAuthenticated = (req, res, next) => {
    if (req.isAuthenticated()) {
       return next();
@@ -7,9 +5,10 @@ export const isAuthenticated = (req, res, next) => {
    res.status(401).json({ success: false, message: "Unauthorized" });
 };
 
-export const singIn = passport.authenticate("local", {
-   session: true,
-});
+export const singIn = (passport) =>
+   passport.authenticate("local", {
+      session: true,
+   });
 
 export const isSuperAdmin = (req, res, next) => {
    if (req.isAuthenticated() && req.user.role === "superadmin") {
