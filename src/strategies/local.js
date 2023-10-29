@@ -1,5 +1,5 @@
-import { getUser } from "../services/auth.service";
-import { verifyPassword } from "../utils/passwords";
+import { getUser } from "../services/auth.service.js";
+import { verifyPassword } from "../utils/passwords.js";
 import { Strategy as LocalStrategy } from "passport-local";
 
 export const setLocalStrategy = (model, passport) => {

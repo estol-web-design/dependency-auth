@@ -3,7 +3,7 @@ import { Strategy as GithubStrategy } from "passport-github2";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import { Strategy as MicrosoftStrategy } from "passport-microsoft";
 import { Strategy as TwitterStrategy } from "passport-twitter";
-import { sign } from "../services/auth.service";
+import { sign } from "../services/auth.service.js";
 
 export const setFacebookStrategy = (model, passport, fbID, fbSecret) => {
    return passport.use(
