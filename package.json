@@ -31,5 +31,6 @@
   "bugs": {
     "url": "https://github.com/estol-web-design/dependency-auth/issues"
   },
-  "homepage": "https://github.com/estol-web-design/dependency-auth#readme"
+  "homepage": "https://github.com/estol-web-design/dependency-auth#readme",
+  "type": "module"
 }
