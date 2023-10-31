@@ -104,7 +104,7 @@ router.get("/sign-out", isAuthenticated, signOut);
 
 ## IMPORTANT
 
-You need to remmember to import and initialize passport from your auth management file this way:
+You need to remmember to import and initialize passport from your auth management file in your index app file this way:
 
 ```javascript
 import passport from "your-auth-management-file";
