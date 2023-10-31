@@ -7,23 +7,28 @@ export const getUser = async (model, email) => {
 };
 
 export const sign = async (model, data) => {
-   if (data.password) {
-      const exists = model.exists({ email: data.email });
-      if (!exists) {
-         throw new Error("User already exists (400)");
+   try {
+      let user;
+      if (data.password) {
+         const exists = model.exists({ email: data.email });
+         if (exists) {
+            user = await model.findOne({email: data.email});
+         } else {
+            const hash = await hashPassword(data.password);
+            user = await model.create({ email: data.email, password: hash, service: "local" });
+         }
+      } else {
+         user = await getUser(model, data.email);
+         if (!user) {
+            user = await model.create({ email: data.email, service: data.service });
+         }
       }
-      const hash = await hashPassword(data.password);
-      await model.create({ email: data.email, password: hash, service: "local" });
-   } else {
-      const user = await getUser(model, data.email);
-      if (!user) {
-         await model.create({ user: data.user, service: data.service });
-      }
+   
+      return user;
+   } catch (error) {
+      console.log(error)
+      throw new Error(error.message)
    }
-
-   const user = await getUser(model, data.email);
-
-   return user;
 };
 
 export const updateUser = async (model, id, field, value) => {

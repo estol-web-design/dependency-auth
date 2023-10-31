@@ -1,19 +1,18 @@
 import { setLocalStrategy } from "./strategies/local.js";
-import * as controller from "./controllers/authController.js";
-import * as middlewares from "./middlewares/auth.middleware.js";
+import * as authController from "./controllers/authController.js";
+import * as authMiddlewares from "./middlewares/auth.middleware.js";
 import { setFacebookStrategy, setGitHubStrategy, setGoogleStrategy, setMicrosoftStrategy, setTwitterStrategy } from "./strategies/oauth.js";
 
-const passportAuth = {
-   controller,
-   middlewares,
-   strategies: {
-      local: setLocalStrategy,
-      facebook: setFacebookStrategy,
-      github: setGitHubStrategy,
-      google: setGoogleStrategy,
-      microsoft: setMicrosoftStrategy,
-      twitter: setTwitterStrategy,
-   },
+const strategies = {
+   local: setLocalStrategy,
+   facebook: setFacebookStrategy,
+   github: setGitHubStrategy,
+   google: setGoogleStrategy,
+   microsoft: setMicrosoftStrategy,
+   twitter: setTwitterStrategy,
 };
 
-export default passportAuth;
+export const controller = authController;
+export const middlewares = authMiddlewares;
+
+export default strategies;

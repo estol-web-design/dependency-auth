@@ -5,10 +5,10 @@ export const isAuthenticated = (req, res, next) => {
    res.status(401).json({ success: false, message: "Unauthorized" });
 };
 
-export const singIn = (passport) =>
-   passport.authenticate("local", {
+export const signIn = (passport) =>{
+   return passport.authenticate("local", {
       session: true,
-   });
+   })};
 
 export const isSuperAdmin = (req, res, next) => {
    if (req.isAuthenticated() && req.user.role === "superadmin") {

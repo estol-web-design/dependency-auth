@@ -46,9 +46,9 @@ export const signOut = (req, res) => {
    });
 };
 
-export const oauthService = async (req, res) => {
+export const oauthService = async (URL, req, res) => {
    try {
-      res.redirect(`/oauth/success`);
+      res.redirect(`${URL}/oauth/success`);
    } catch (error) {
       return res.status(500).json({ success: false, message: error.message });
    }
