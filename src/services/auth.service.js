@@ -10,19 +10,18 @@ export const sign = async (model, data) => {
    try {
       let user;
       if (data.password) {
-         const exists = model.exists({ email: data.email });
-         if (exists) {
-            user = await model.findOne({email: data.email});
-         } else {
+         user = await model.findOne({email: data.email});
+         if (!user) {
             const hash = await hashPassword(data.password);
             user = await model.create({ email: data.email, password: hash, service: "local" });
-         }
+         } 
       } else {
          user = await getUser(model, data.email);
          if (!user) {
             user = await model.create({ email: data.email, service: data.service });
          }
       }
+
    
       return user;
    } catch (error) {

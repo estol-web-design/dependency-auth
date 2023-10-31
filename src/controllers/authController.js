@@ -1,6 +1,6 @@
 import * as authService from "../services/auth.service.js";
 
-export const signUp = async (model, req, res) => {
+export const signUp = async (model, req, res, next) => {
    try {
       const data = req.body;
       const user = await authService.sign(model, data);
@@ -28,7 +28,7 @@ export const updateUser = async (model, req, res) => {
    }
 };
 
-export const signIn = (req, res) => {
+export const signIn = (req, res, next) => {
    if (req.user) {
       return res.json({ success: true, user: req.user });
    } else {

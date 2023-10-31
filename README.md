@@ -86,7 +86,7 @@ const { getOAuthUser, oauthService, signOut, signUp, updateUser } = controller;
 const router = express.Router();
 
 // local routes
-router.post("/local/sign-up", (req, res) => signUp(User, req, res));
+router.post("/local/sign-up", (req, res, next) => signUp(User, req, res, next));
 router.post("/local/sign-in", signInMiddleware(passport), (req, res) => signIn(req, res));
 
 // oauth routes
