@@ -1,5 +1,5 @@
 {
-  "name": "estol-auth-oauth",
+  "name": "estol-auth",
   "version": "1.0.1",
   "description": "Autnentication & Authorization, passport based dependency",
   "main": "src/index.js",
