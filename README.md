@@ -1,4 +1,4 @@
-# estol-auth-oauth
+# estol-auth
 
 This module provides authorization and authentication functionalities for a Node.js application. It includes local authentication and valious OAuth strategies (Facebook, GitHub, Google, Microsoft, Twitter). The module uses bcrypt for password and provides utility functions for password verification and hashing.
 
@@ -27,7 +27,7 @@ const userSchema = new Schema({
 Import in your auth managment file the auth strategies that you need this way
 
 ```javascript
-import strategies from "estol-auth-oauth";
+import strategies from "estol-auth";
 
 // here you can define constants for the strategies you need
 const { local, facebook, github, google, microsoft, twitter } = strategies;
@@ -39,7 +39,7 @@ To implement this strategies in your project you will need to install passport i
 
 ```javascript
 import passport from "passport";
-import strategies from "estol-auth-oauth";
+import strategies from "estol-auth";
 
 import User from "your-user-model";
 
@@ -62,7 +62,7 @@ export default passport;
 Import in your auth routes file the middlewares and controller functions this way
 
 ```javascript
-import { controller, middlewares } from "estol-auth-oauth";
+import { controller, middlewares } from "estol-auth";
 
 // here you can define constants for signIn & isAuthenticated middleware, and the user role's middlewares that you need
 const { signIn, isAuthenticated, isModerator, isAdmin, isSuperAdmin } = middlewares;
@@ -75,7 +75,7 @@ const { getOAuthUser, oauthService, signOut, signUp, updateUser } = controller;
 
 ```javascript
 import express from "express";
-import { controller, middlewares } from "estol-auth-oauth";
+import { controller, middlewares } from "estol-auth";
 import User from "your-user-model";
 // import passport from your auth managment file with the strategies that you will be implementing in your app
 import passport from "your-auth-management-file";
