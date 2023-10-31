@@ -5,7 +5,7 @@ export const isAuthenticated = (req, res, next) => {
    res.status(401).json({ success: false, message: "Unauthorized" });
 };
 
-export const signIn = (passport) =>{
+export const signInMiddleware = (passport) =>{
    return passport.authenticate("local", {
       session: true,
    })};
