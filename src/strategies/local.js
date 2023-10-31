@@ -1,4 +1,4 @@
-import { getUser } from "../services/auth.service.js";
+import { getUser, sign } from "../services/auth.service.js";
 import { verifyPassword } from "../utils/passwords.js";
 import { Strategy as LocalStrategy } from "passport-local";
 
@@ -7,23 +7,29 @@ export const setLocalStrategy = (model, passport) => {
       new LocalStrategy(
          {
             usernameField: "email",
-            passportField: "password",
+            passwordField: "password",
          },
          async (email, password, done) => {
             try {
-               const user = await getUser(model, email);
+               const data = {
+                  email,
+                  password,
+                  service: 'local',
+               }
 
-               if (!user) {
+               const usr = await sign(model, data);
+
+               if (!usr) {
                   return done(null, false, { message: "User does not exist" });
                }
 
-               const matchingPass = await verifyPassword(password, user.password);
-
+               const matchingPass = await verifyPassword(password, usr.password);
+               
                if (!matchingPass) {
                   return done(null, false, { message: "Password does not match" });
                }
 
-               delete user.password;
+               const user = await getUser(model, email);
 
                return done(null, user);
             } catch (err) {
