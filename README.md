@@ -5,7 +5,7 @@ This module provides authorization and authentication functionalities for a Node
 ## Instalation
 
 ```
-$ npm install git+https://github.com/estol-web-design/dependency-auth.git
+$ npm install estol-auth
 ```
 
 ## Usage
